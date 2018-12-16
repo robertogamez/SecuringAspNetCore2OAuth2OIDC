@@ -64,8 +64,26 @@ namespace Marvin.IDP
         public static IEnumerable<Client> GetClients()
         {
             return new List<Client>()
-            {
-            };
+           {
+               new Client
+               {
+                   ClientName = "Image Gallery",
+                   ClientId = "imagegalleryclient",
+                   AllowedGrantTypes = GrantType.Hybrid,
+                   RedirectUris = new List<string>
+                   {
+                       "https://localhost:44396/signin-oidc"
+                   },
+                   AllowedScopes =
+                   {
+                       IdentityServerConstants.StandardScopes.OpenId
+                   },
+                   ClientSecrets =
+                   {
+                       new Secret("secret".Sha256())
+                   }
+               }
+           };
 
         }
     }
